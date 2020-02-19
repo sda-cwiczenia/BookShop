@@ -33,4 +33,8 @@ public class BookService {
         Book book = new Book(author,country,title,issueYear,genre,sales);
         dao.saveUpdate(book);
     }
+
+    public void pokazWszystkieKsiazki() {
+        for (Book ksiazka : dao.getAll()) System.out.println(ksiazka);
+    }
 }
