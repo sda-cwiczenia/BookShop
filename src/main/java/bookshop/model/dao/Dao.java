@@ -8,12 +8,8 @@ public interface Dao<T> {
 
     List<T> getAll();
 
-    void save(T t);
-
-    void update(T t);
+    void saveUpdate(T t);
 
     void delete(T t);
-
-    int add(T t);
 }
 
