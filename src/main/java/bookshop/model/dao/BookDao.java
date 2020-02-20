@@ -20,8 +20,8 @@ public class BookDao implements Dao<Book> {
     }
 
     @Override
-    public Optional<Book> get(long id) {
-        return Optional.ofNullable(entityManager.find(Book.class, id));
+    public Book get(long id) {
+        return entityManager.find(Book.class, id);
     }
 
     @Override
@@ -44,5 +44,15 @@ public class BookDao implements Dao<Book> {
         trn.commit();
     }
 
+    public List<Book> getByAuthor(String author) {
+        List<Book> books = entityManager.createQuery("select b from Book b where b.author = ?1")
+                .setParameter(1,author).getResultList();
+        return books;
+    }
 
+
+    public List<Book> getByCountry(String country) {
+        return entityManager.createQuery("select b from Book b where country = ?1")
+                .setParameter(1,country).getResultList();
+    }
 }

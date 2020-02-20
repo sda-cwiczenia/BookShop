@@ -3,6 +3,7 @@ package bookshop.service;
 import bookshop.model.dao.BookDao;
 import bookshop.model.entity.Book;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class BookService {
@@ -10,7 +11,7 @@ public class BookService {
     BookDao dao;
     private Scanner sc = new Scanner(System.in);
     String author, country, genre, title;
-    int issueYear, sales;
+    int issueYear, sales, id;
 
     public BookService() {
         dao = new BookDao();
@@ -37,4 +38,28 @@ public class BookService {
     public void pokazWszystkieKsiazki() {
         for (Book ksiazka : dao.getAll()) System.out.println(ksiazka);
     }
-}
+
+    public void znajdzKsiazke() {
+        System.out.print("Podaj autora : ");
+        author = sc.nextLine().trim();
+        //System.out.println("Książki "+author+" liczba "+dao.getByAuthor(author).size());
+        System.out.println(author);
+        for (Book ksiazka: dao.getByAuthor(author)) System.out.println(ksiazka);
+    }
+
+    public void usunKsiazke() {
+        System.out.print(" Podaj id książki do usunięcia :");
+        id = sc.nextInt();
+
+        Book ksazka = dao.get(id);
+        dao.delete(ksazka);
+    }
+
+    public void znajdzKsiazkePoKraju() {
+        System.out.print("Podaj kraj : ");
+        country = sc.nextLine();
+        System.out.println("Książki z kraju : "+country);
+        for (Book ksiazka: dao.getByCountry(country)) System.out.println(ksiazka);
+    }
+
+    }

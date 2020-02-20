@@ -32,11 +32,11 @@ public class BookShop {
                     break;
                 }
                 case 3: {
-                    //menuUsunPracownika();
+                    ksiegarnia.usunKsiazke();
                     break;
                 }
                 case 4: {
-                    //menuZnajdzPracownikaPoId();
+                    ksiegarnia.znajdzKsiazkePoKraju();
                     break;
                 }
                 case 5: {
@@ -59,7 +59,7 @@ public class BookShop {
         System.out.println("1. Lista książek");
         System.out.println("2. Dodaj książkę");
         System.out.println("3. Usuń książkę");
-        System.out.println("4. Znajdz książkę po autorze");
+        System.out.println("4. Znajdz książkę po kraju");
         System.out.println("5. Wyjście z programu");
         System.out.print("Wybierz opcję (1-5) : ");
         nrMenu = sc.nextInt();
